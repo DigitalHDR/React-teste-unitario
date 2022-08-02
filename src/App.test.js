@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import App from './App'
 
 describe('App', () => {
-  test('Deverá renderizar os elementos corretamente', () => {
+  it('Deverá renderizar os elementos corretamente', () => {
     render(<App />)
     const texto = screen.queryByText('Hello,')
     expect(texto).toBeInTheDocument()
@@ -14,14 +14,14 @@ describe('App', () => {
     expect(imageElement).toBeInTheDocument()
   })
   
-  test('devera encontrar a imagem com o texto alternativo correto', () => {
+  it('devera encontrar a imagem com o texto alternativo correto', () => {
     render(<App />)
   
     const altTextImageElement = screen.queryByAltText('ilustração do pikachu')
     expect(altTextImageElement).toBeInTheDocument()
   })
   
-  test('deverá pegar o input corretamente', () => {
+  it('deverá pegar o input corretamente', () => {
     render(<App />)
     const inputElement = screen.queryByPlaceholderText('digite seu nome')
     fireEvent.change(inputElement, {
@@ -34,7 +34,7 @@ describe('App', () => {
     expect(valorDigitado).toHaveTextContent('Lucas')
   })
   
-  test('deverá renderizar corretamente o texto digitado', () => {
+  it('deverá renderizar corretamente o texto digitado', () => {
     render(<App />)
   
     const inputElement = screen.queryByPlaceholderText('digite seu nome')
