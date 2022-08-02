@@ -6,6 +6,9 @@ test('Deverá renderizar os elementos corretamente', () => {
   const texto = screen.queryByText('Hello,')
   expect(texto).toBeInTheDocument()
 
-  const inputElemente = screen.queryByPlaceholderText('digite seu nome')
-  expect(inputElemente).toBeInTheDocument()
+  const inputElement = screen.queryByPlaceholderText('digite seu nome')
+  expect(inputElement).toBeInTheDocument()
+
+  const imageElement = screen.queryByRole('img')
+  expect(imageElement).toBeInTheDocument()
 })
