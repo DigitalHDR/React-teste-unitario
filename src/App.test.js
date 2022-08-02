@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import App from './App'
 
 test('Deverá renderizar os elementos corretamente', () => {
@@ -18,4 +18,17 @@ test('devera encontrar a imagem com o texto alternativo correto', () => {
 
   const altTextImageElement = screen.queryByAltText('ilustração do pikachu')
   expect(altTextImageElement).toBeInTheDocument()
+})
+
+test('deverá pegar o input corretamente', () => {
+  render(<App />)
+  const inputElement = screen.queryByPlaceholderText('digite seu nome')
+  fireEvent.change(inputElement, {
+    target: {
+      value: 'Lucas'
+    }
+  })
+
+  const valorDigitado = screen.queryByText('Lucas')
+  expect(valorDigitado).toHaveTextContent('Lucas')
 })
