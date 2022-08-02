@@ -25,10 +25,23 @@ test('deverá pegar o input corretamente', () => {
   const inputElement = screen.queryByPlaceholderText('digite seu nome')
   fireEvent.change(inputElement, {
     target: {
-      value: 'Lucas'
-    }
+      value: 'Lucas',
+    },
   })
 
   const valorDigitado = screen.queryByText('Lucas')
   expect(valorDigitado).toHaveTextContent('Lucas')
+})
+
+test('deverá renderizar corretamente o texto digitado', () => {
+  render(<App />)
+
+  const inputElement = screen.queryByPlaceholderText('digite seu nome')
+  fireEvent.change(inputElement, {
+    target: {
+      value: 'Lucas',
+    },
+  })
+  expect(screen.queryByText('Lucas')).toHaveTextContent('Lucas')
+  expect(screen.queryByText('Hello,')).toHaveTextContent('Hello, Lucas')
 })
