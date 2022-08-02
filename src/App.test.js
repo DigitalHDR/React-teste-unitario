@@ -12,3 +12,10 @@ test('Deverá renderizar os elementos corretamente', () => {
   const imageElement = screen.queryByRole('img')
   expect(imageElement).toBeInTheDocument()
 })
+
+test('devera encontrar a imagem com o texto alternativo correto', () => {
+  render(<App />)
+
+  const altTextImageElement = screen.queryByAltText('ilustração do pikachu')
+  expect(altTextImageElement).toBeInTheDocument()
+})
